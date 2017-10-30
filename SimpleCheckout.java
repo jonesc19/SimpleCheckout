@@ -9,6 +9,14 @@ public class SimpleCheckout {
 
     private static final NumberFormat format = NumberFormat.getCurrencyInstance(Locale.UK);
 
+    private static long twoForOne(long n) {
+        return (n + 1) / 2;
+    }
+
+    private static long threeForTwo(long n) {
+        return (n / 3) * 2 + (n % 3);
+    }
+
     String totalCost(String[] purchases) {
 
         long apple  = 0;
@@ -27,7 +35,7 @@ public class SimpleCheckout {
             }
         }
 
-        long cost = apple * APPLE_UNIT_PRICE + orange * ORANGE_UNIT_PRICE;
+        long cost = twoForOne(apple) * APPLE_UNIT_PRICE + threeForTwo(orange) * ORANGE_UNIT_PRICE;
 
         return format.format(cost / 100.0);
     }
